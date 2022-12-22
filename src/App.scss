@@ -1,0 +1,273 @@
+$colorTealBlue: #001e3d;
+$colorTealBlueDark: #000d21;
+$colorWhite: #ffffff;
+$colorBlack: #000000;
+$colorCherry: #f20042;
+
+$m-0: 0px;
+$mr-0: 0px;
+$ml-0: 0px;
+$mt-0: 0px;
+$mb-0: 0px;
+$ml-15: 15px;
+$mt-15: 15px;
+$mb-15: 15px;
+$mr-15: 15px;
+
+$p-0: 0px;
+$pr-0: 0px;
+$pl-0: 0px;
+$pt-0: 0px;
+$pb-0: 0px;
+$pl-15: 15px;
+$pt-15: 15px;
+$pb-15: 15px;
+$pr-15: 15px;
+
+$maxWidth: 100%;
+$maxWidth-1540: 1540px;
+$fullWidth: 100%;
+$fullHeight: 100%;
+
+@mixin display-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin img-fit-cover {
+  object-fit: cover;
+  height: $fullWidth;
+  width: $fullWidth;
+}
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+* {
+  box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: $m-0;
+}
+ul {
+  margin: $m-0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+img {
+  max-width: $maxWidth;
+}
+body {
+  background-color: $colorTealBlue;
+  color: $colorWhite;
+}
+.container {
+  max-width: $maxWidth-1540;
+  padding-left: $ml-15;
+  padding-right: $mr-15;
+  margin: auto;
+}
+// Header
+
+.header {
+  display: block;
+  padding: $pt-15 0 $pb-15 0;
+  ul {
+    @include display-flex;
+  }
+  li {
+    display: inline-block;
+    margin-right: $mr-15;
+    &:last-child {
+      margin-right: $mr-0;
+    }
+    svg {
+      color: $colorCherry;
+      font-size: 40px;
+    }
+  }
+  .navbar-item {
+    color: $colorWhite;
+    text-decoration: none;
+    &.active {
+      font-weight: bold;
+    }
+  }
+  .searchBox {
+    position: relative;
+    input {
+      width: $fullWidth;
+      background-color: transparent;
+      box-shadow: none;
+      border: 1px solid $colorTealBlueDark;
+      padding: 10px 20px 10px 10px;
+      color: $colorWhite;
+      &::placeholder {
+        color: $colorWhite;
+        opacity: 1;
+      }
+    }
+    button {
+      background-color: transparent;
+      border: none;
+      position: absolute;
+      top: 50%;
+      right: 12px;
+      transform: translateY(-50%);
+      svg {
+        color: $colorWhite;
+      }
+    }
+    @media (min-width: 768px) {
+      width: 315px;
+    }
+  }
+  @media (min-width: 768px) {
+    @include display-flex;
+  }
+}
+
+// Movie list item
+
+.listContainer {
+  display: grid;
+  grid-gap: 20px 10px;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 15px 0;
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (min-width: 1024px) {
+    grid-gap: 30px 20px;
+    grid-template-columns: repeat(5, 1fr);
+    margin: 30px 0;
+  }
+  &--item {
+    position: relative;
+    cursor: pointer;
+    &:hover .itemInfo {
+      opacity: 1;
+      transition: 0.3s;
+    }
+    .itemInfo {
+      position: absolute;
+      top: 0;
+      padding: 10px 10px;
+      opacity: 0;
+      width: 100%;
+      transition: 0.3s;
+      div {
+        @include display-flex;
+        span {
+          background-color: $colorBlack;
+          padding: 3px 8px;
+          border-radius: 3px;
+        }
+      }
+    }
+    img {
+      @include img-fit-cover;
+    }
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+  & > div {
+    @include absolute-center;
+    color: $colorWhite;
+    background-color: $colorTealBlueDark;
+    width: 90%;
+    max-width: 845px;
+    max-height: 90vh;
+    overflow-y: auto;
+    .btn-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 2;
+      color: #ffffff;
+      font-size: 40px;
+      background-color: transparent;
+      border: none;
+    }
+  }
+}
+
+.movieImg-container {
+  position: relative;
+  padding: 2px;
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    bottom: 0;
+    right: 0;
+  }
+  @media (min-width: 768px) {
+    height: 380px;
+  }
+  @media (min-width: 1024px) {
+    height: 440px;
+  }
+  p {
+    @include absolute-center;
+    z-index: 3;
+    font-size: 21px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    width: 90%;
+    @media (min-width: 768px) {
+      font-size: 32px;
+    }
+    @media (min-width: 1024px) {
+      font-size: 40px;
+    }
+  }
+  img {
+    @include img-fit-cover;
+  }
+}
+.movie-details {
+  padding: 20px;
+  .movie-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    @media (min-width: 1024px) {
+      font-size: 30px;
+    }
+  }
+  p {
+    margin-bottom: 0;
+  }
+  .movie-genres {
+    margin-top: 15px;
+  }
+  .movie-runtime {
+    span {
+      margin-right: 15px;
+    }
+  }
+}

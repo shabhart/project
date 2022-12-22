@@ -1,0 +1,12 @@
+export const BASE_URL = 'https://api.themoviedb.org/3/movie';
+export const URL_POPULAR = '/popular';
+export const URL_UPCOMING = '/upcoming';
+export const URL_IMG = 'https://image.tmdb.org/t/p/';
+export const URL_CAST = '/casts';
+export const IMG_SIZE_XSMALL = 'w45/';
+export const IMG_SIZE_SMALL = 'w150/';
+export const IMG_SIZE_LARGE = 'w342/';
+export const IMG_SIZE_POSTER = 'w780';
+export const CAST_MAX_NUM = 5;
+export const TRAILER_MAX_NUM = 3;
+export const API_KEY = '?api_key=7826b828b8971b2adc0e3801578e24c7';
