@@ -18,7 +18,7 @@ export default function Modal(props) {
             <button className='btn-close' onClick={()=> props.onCloseModal()} aria-label="Close"><MdClose/></button>
             <div className='movie-box'>
                 <div className='movieImg-container'>
-                    {props?.data?.tagline ? <p className='movie-tagline'>"{props?.data?.tagline}"</p> :''}
+                    {props?.data?.tagline ? <h2 className='movie-tagline'>"{props?.data?.tagline}"</h2> :''}
                     <picture>
                         <source 
                             media="(min-width: 650px)"
@@ -32,7 +32,7 @@ export default function Modal(props) {
                     </picture>
                 </div>
                 <div className='movie-details'>
-                    <h2 className='movie-title'>{props?.data?.title}</h2>
+                    <h3 className='movie-title'>{props?.data?.title}</h3>
                     <div className='movie-runtime'>
                         <span><FaStar/> {props?.data?.vote_average}</span>
                         <span><FaClock/> {toHoursAndMinutes(props?.data?.runtime)}</span>

@@ -231,7 +231,7 @@ body {
   @media (min-width: 1024px) {
     height: 440px;
   }
-  p {
+  h2 {
     @include absolute-center;
     z-index: 3;
     font-size: 21px;
